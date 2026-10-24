@@ -70,6 +70,7 @@ public class AlunoService {
             System.out.println("Aluno não encontrado.");
             return;
         }
+
         if (alunoEditado.getNome() == null || aluno.getNome().isBlank()) {
             System.out.println("O nome do aluno é obrigatório.");
             return;
@@ -84,11 +85,13 @@ public class AlunoService {
             System.out.println("E-mail inválido.");
             return;
         }
+
         if (repository.listar().stream()
                 .anyMatch(al -> al.getEmail().equalsIgnoreCase(alunoEditado.getEmail()))) {
             System.out.println("E-mail já cadastrado.");
             return;
         }
+
         repository.atualizar(alunoEditado);
         System.out.println("Aluno atualizado com sucesso.");
     }
